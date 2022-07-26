@@ -41,7 +41,10 @@ export async function PlaybackService() {
     console.log('Event.PlaybackQueueEnded', data);
   });
 
-  TrackPlayer.addEventListener(Event.PlaybackTrackChanged, data => {
+  TrackPlayer.addEventListener(Event.PlaybackTrackChanged, async data => {
+    // After going through a few tracks, you should see that it doesn't always immediately pause.
+    // Sometimes the delay is pretty noticeable
+    await TrackPlayer.pause();
     console.log('Event.PlaybackTrackChanged', data);
   });
 
